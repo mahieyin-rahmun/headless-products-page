@@ -1,0 +1,35 @@
+{
+  "name": "headless-products-backend",
+  "version": "1.0.0",
+  "description": "Backend for products page for Headless",
+  "main": "server.js",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev nodemon server.js",
+    "test": "mocha ./tests/*.test.js"
+  },
+  "author": "Mahieyin Rahmun",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "cross-env": "^7.0.2",
+    "dotenv": "^8.2.0",
+    "mocha": "^7.2.0",
+    "nodemon": "^2.0.4"
+  },
+  "dependencies": {
+    "bcrypt": "^4.0.1",
+    "connect-flash": "^0.1.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-winston": "^4.0.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.9.15",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "uuid": "^8.1.0",
+    "winston": "^3.2.1"
+  }
+}
