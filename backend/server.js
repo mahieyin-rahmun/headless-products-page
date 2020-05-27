@@ -84,10 +84,16 @@ mongoose.connect(dbURI, dbOptions)
 	.then(() => console.log("Connected to MongoDB Atlas"))
 	.catch(err => console.log(err));
 
+app.use(express.static(path.resolve(__dirname, "./build")));
+
 // product routes
 app.use("/api/v1/products", productRoutes);
 // authentication routes
 app.use("/api/v1/auth", authRoutes);
+
+app.get("*/*", (req, res) => {
+	res.sendFile(path.resolve(__dirname, "./build/index.html"));
+});
 
 
 app.listen(PORT, () => {

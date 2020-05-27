@@ -36,7 +36,7 @@ router.get("/callback", (req, res, next) => {
 			token: token
 		});
 
-		return res.redirect("http://localhost:3000/login/success/" + qs);
+		return res.redirect("/login/success/" + qs);
 	})(req, res, next);
 });
 
@@ -47,7 +47,7 @@ router.get("/failed", (req, res) => {
 		messageBody: req.flash("loginFailed")[0]
 	});
 
-	return res.redirect("http://localhost:3000/login/failed/" + qs);
+	return res.redirect("/login/failed/" + qs);
 })
 
 
