@@ -11,12 +11,11 @@ export const clientRoutes = {
 
 
 export const backendRoutes = {
-  GOOGLE_OAUTH_LOGIN: "http://localhost:3001/api/v1/auth/google/login",
-  TOKEN_VERIFY: "http://localhost:3001/api/v1/auth/verify",
-  LOCAL_LOGIN: "http://localhost:3001/api/v1/auth/local/login",
-  LOCAL_SIGNUP: "http://localhost:3001/api/v1/auth/local/signup",
-  FETCH_PRODUCTS: "http://localhost:3001/api/v1/products",
-  PRODUCT_FAVORITES: "http://localhost:3001/api/v1/products/favorite",
-  UNFAVORITE_PRODUCT: "http://localhost:3001/api/v1/products/unfavorite",
-  
+  GOOGLE_OAUTH_LOGIN: "/api/v1/auth/google/login",
+  TOKEN_VERIFY: "/api/v1/auth/verify",
+  LOCAL_LOGIN: "/api/v1/auth/local/login",
+  LOCAL_SIGNUP: "/api/v1/auth/local/signup",
+  FETCH_PRODUCTS: "/api/v1/products",
+  PRODUCT_FAVORITES: "/api/v1/products/favorite",
+  UNFAVORITE_PRODUCT: "/api/v1/products/unfavorite"  
 };
