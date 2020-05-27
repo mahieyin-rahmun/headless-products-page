@@ -24,6 +24,12 @@ class LoginPage extends Component {
 	onLoginClick = (event) => {
 		event.preventDefault();
 		const { email, password } = this.state;
+
+		// validate
+		if (email === "" || password === "") {
+			return this.props.loginError("Please fill in all the fields!");
+		}
+		
 		this.props.loginLocal(email, password);
 	}
 
