@@ -1,8 +1,9 @@
 const { Router } = require("express");
+const { v4 } = require("uuid");
+
 const Product = require("../models/Product");
 const Favorite = require("../models/Favorite");
-
-const User = require("../models/User");
+const Order = require("../models/Order");
 const verifyToken = require("./auth/utils/middleware/verifyToken");
 
 const router = Router();
@@ -34,6 +35,31 @@ router.get("/", verifyToken, (req, res) => {
 				messageBody: []
 			});
 		}		
+	})
+});
+
+
+router.get("/orders", verifyToken, (req, res) => {
+	const { userID } = req.user;
+	Order.find({ userID: userID }, (err, docs) => {
+		if (err) {
+			return res.status(500).send({
+				messageType: "error",
+				messageBody: "Internal server error"
+			});
+		}
+
+		if (docs.length > 0) {
+			return res.json({
+				messageType: "success",
+				messageBody: docs
+			});
+		} else {
+			return res.json({
+				messageType: "success",
+				messageBody: []
+			});
+		}
 	})
 });
 
@@ -165,6 +191,42 @@ router.post("/unfavorite", verifyToken, (req, res) => {
 			});
 		}
 	});
+});
+
+router.post("/confirmorder", verifyToken, (req, res) => {
+	// products is an array containing
+	// product id, quantity, price
+	const { products } = req.body;
+	const { userID } = req.user;
+
+	// calculate total price
+	let totalPrice = 0;
+	for (let i = 0; i < products.length; i++) {
+		totalPrice += products[i].price * products[i].quantity;
+	}
+
+	const order = new Order({
+		orderID: v4(),
+		userID: userID,
+		products: products,
+		totalAmount: totalPrice
+	});
+
+	order.save((err, orderDoc) => {
+		if (err) {
+			console.log(err);
+			return res.status(500).send({
+				messageType: "error",
+				messageBody: "Internal server error"
+			});
+		}
+
+		return res.json({
+			messageType: "success",
+			messageBody: orderDoc
+		});
+	})
+
 });
 
 module.exports = router;
