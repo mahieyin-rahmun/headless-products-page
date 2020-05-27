@@ -15,6 +15,7 @@ import ProductsPage from './components/pages/ProductsPage';
 import LoginPage from "./components/pages/LoginPage";
 import OrderPage from './components/pages/OrderPage';
 import SignupPage from './components/pages/SignupPage';
+import ErrorPage from "./components/pages/404Page";
 
 import isAuthenticated from "./components/hoc/isAuthenticated";
 import isNotAuthenticated from "./components/hoc/isNotAuthenticated";
@@ -38,6 +39,8 @@ class App extends Component {
               <Route exact path={clientRoutes.ORDER_ROUTE} component={isAuthenticated(OrderPage)} />
 
               <Route exact path={clientRoutes.PRODUCTS_ROUTE} component={isAuthenticated(ProductsPage)} />
+
+              <Route component={ErrorPage} />
             </Switch>
           </Router>
         </Container>
