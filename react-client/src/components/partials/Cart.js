@@ -6,11 +6,9 @@ import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import CartProduct from './CartProduct';
-import { removeFromCart } from "../../store/actions/cartActions";
+import { removeFromCart, clearCart } from "../../store/actions/cartActions";
 
 import { clientRoutes } from "../../routes";
-
-
 
 
 class Cart extends Component {
@@ -20,10 +18,8 @@ class Cart extends Component {
     }
   }
 
-  clearCart = () => {
-    this.props.cart.forEach(product => {
-      this.props.removeFromCart(product.productID);
-    });
+  clearCartProducts = () => {
+    this.props.clearCart();
   }
 
   render() {
@@ -40,7 +36,7 @@ class Cart extends Component {
         <Card style={{ width: '28rem', height: "50rem", marginTop: "1rem", marginLeft: "-1.5rem" }}>
           <Card.Header>
             Your Cart
-            <FontAwesomeIcon onClick={this.clearCart} icon="trash-alt" style={{ cursor: "pointer", float: "right", width: "1.5rem", height: "1.5rem" }}/>
+            <FontAwesomeIcon onClick={this.clearCartProducts} icon="trash-alt" style={{ cursor: "pointer", float: "right", width: "1.5rem", height: "1.5rem" }}/>
           </Card.Header>
           <Card.Body>
             {
@@ -93,6 +89,6 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default compose(
-  connect(mapStateToProps, { removeFromCart }),
+  connect(mapStateToProps, { removeFromCart, clearCart }),
   withRouter
 )(Cart);

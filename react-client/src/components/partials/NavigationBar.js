@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Nav, Navbar } from 'react-bootstrap';
 import { logout } from "../../store/actions/authActions";
 import { clientRoutes } from '../../routes';
+import { Link } from 'react-router-dom';
 
 class NavigationBar extends Component {
   render() {
@@ -14,7 +15,11 @@ class NavigationBar extends Component {
           <Navbar.Collapse id="basic-navbar-nav">
             {
               this.props.isUserAuthenticated ?
-                "" : (
+                (
+                  <Nav className="mr-auto">
+                    <Link style={{ textDecoration: "none", color: "white" }} to={clientRoutes.ORDERS_ROUTE}> View Orders </Link>
+                  </Nav>
+                ) : (
                   <Nav className="mr-auto">
                     <Nav.Link href={clientRoutes.LOGIN_ROUTE}>Login</Nav.Link>
                     <Nav.Link href={clientRoutes.SIGNUP_ROUTE}>Signup</Nav.Link>

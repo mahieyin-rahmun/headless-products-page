@@ -15,6 +15,7 @@ import ProductsPage from './components/pages/ProductsPage';
 import LoginPage from "./components/pages/LoginPage";
 import OrderPage from './components/pages/OrderPage';
 import SignupPage from './components/pages/SignupPage';
+import OrdersPage from './components/pages/OrdersPage';
 import ErrorPage from "./components/pages/404Page";
 
 import isAuthenticated from "./components/hoc/isAuthenticated";
@@ -25,10 +26,10 @@ library.add(fas, far, fab, faGoogle, faSolidHeart, faRegularHeart, faShoppingCar
 class App extends Component {
   render() {
     return this.props.isVerifyingToken ? null : (
-      <div>
-        <NavigationBar /> 
-        <Container>
-          <Router>
+      <div> 
+        <Router>
+          <NavigationBar /> 
+          <Container>          
             <Switch>
               <Route exact path={clientRoutes.LOGIN_ROUTE} component={isNotAuthenticated(LoginPage)} />
               <Route exact path={clientRoutes.LOGIN_FAILURE_ROUTE} component={isNotAuthenticated(LoginPage)} />
@@ -37,13 +38,14 @@ class App extends Component {
               <Route exact path={clientRoutes.SIGNUP_ROUTE} component={isNotAuthenticated(SignupPage)} />
 
               <Route exact path={clientRoutes.ORDER_ROUTE} component={isAuthenticated(OrderPage)} />
+              <Route exact path={clientRoutes.ORDERS_ROUTE} component={isAuthenticated(OrdersPage)} />
 
               <Route exact path={clientRoutes.PRODUCTS_ROUTE} component={isAuthenticated(ProductsPage)} />
 
               <Route component={ErrorPage} />
             </Switch>
-          </Router>
-        </Container>
+          </Container>
+        </Router>
       </div>
     );
   }

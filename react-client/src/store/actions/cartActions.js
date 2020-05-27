@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY } from './types/cartActionTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY, CLEAR_CART } from './types/cartActionTypes';
 
 
 export const addToCart = (productID) => (dispatch, getState) => {
@@ -28,5 +28,11 @@ export const updateQuantity = (quantity, productID) => (dispatch) => {
       quantity,
       productID
     }
+  });
+}
+
+export const clearCart = () => (dispatch) => {
+  return dispatch({
+    type: CLEAR_CART
   });
 }

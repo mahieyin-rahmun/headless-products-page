@@ -6,6 +6,7 @@ export const clientRoutes = {
   LOGIN_FAILURE_ROUTE: "/login/success/:data",
   SIGNUP_ROUTE: "/signup",
   ORDER_ROUTE: "/order",
+  ORDERS_ROUTE: "/orders",
   PRODUCTS_ROUTE: "/"
 };
 
@@ -17,5 +18,7 @@ export const backendRoutes = {
   LOCAL_SIGNUP: "/api/v1/auth/local/signup",
   FETCH_PRODUCTS: "/api/v1/products",
   PRODUCT_FAVORITES: "/api/v1/products/favorite",
-  UNFAVORITE_PRODUCT: "/api/v1/products/unfavorite"  
+  UNFAVORITE_PRODUCT: "/api/v1/products/unfavorite",
+  PLACE_ORDER: "/api/v1/products/confirmorder",
+  FETCH_ORDERS: "/api/v1/products/orders"
 };

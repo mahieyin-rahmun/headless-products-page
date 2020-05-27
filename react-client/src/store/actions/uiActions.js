@@ -11,7 +11,11 @@ import {
   ADD_TO_FAVORITES_SUCCESS,
   REMOVE_FROM_FAVORITES_FAILED,
   REMOVE_FROM_FAVORITES_SUCCESS,
-  TOGGLE_IS_WORKING
+  TOGGLE_IS_WORKING,
+  ORDER_FAILED, 
+  ORDER_SUCCESS,
+  FETCH_ORDERS_FAILED,
+  FETCH_ORDERS_SUCCESS
 } from './types/uiActionTypes';
 
 
@@ -104,3 +108,30 @@ export const removeFromFavoriteProductsFailed = (errorMessage) => (dispatch) => 
     payload: errorMessage
   })
 };
+
+export const orderFailed = (errorMessage) => (dispatch) => {
+  return dispatch({
+    type: ORDER_FAILED,
+    payload: errorMessage
+  });
+};
+
+export const orderSuccess = () => (dispatch) => {
+  return dispatch({
+    type: ORDER_SUCCESS
+  });
+};
+
+
+export const fetchOrdersFailed = (errorMessage) => (dispatch) => {
+  return dispatch({
+    type: FETCH_ORDERS_FAILED,
+    payload: errorMessage
+  });
+}
+
+export const fetchOrdersSuccess = () => (dispatch) => {
+  return dispatch({
+    type: FETCH_ORDERS_SUCCESS
+  });
+}

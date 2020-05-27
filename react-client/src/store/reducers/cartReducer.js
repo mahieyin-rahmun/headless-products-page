@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY } from '../actions/types/cartActionTypes';
+import { ADD_TO_CART, REMOVE_FROM_CART, UPDATE_QUANTITY, CLEAR_CART } from '../actions/types/cartActionTypes';
 
 const initialState = {
   cartProducts: []
@@ -47,6 +47,12 @@ const cartReducer = (state = initialState, action) => {
           },
           ...state.cartProducts.slice(productIndex + 1)
         ]
+      };
+    
+    case CLEAR_CART:
+      return {
+        ...state,
+        cartProducts: []
       };
     
     default:

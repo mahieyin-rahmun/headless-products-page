@@ -11,7 +11,11 @@ import {
   ADD_TO_FAVORITES_SUCCESS,
   REMOVE_FROM_FAVORITES_FAILED,
   REMOVE_FROM_FAVORITES_SUCCESS,
-  TOGGLE_IS_WORKING
+  TOGGLE_IS_WORKING,
+  ORDER_FAILED,
+  ORDER_SUCCESS,
+  FETCH_ORDERS_FAILED,
+  FETCH_ORDERS_SUCCESS
 } from '../actions/types/uiActionTypes';
 
 const initialState = {
@@ -20,6 +24,10 @@ const initialState = {
     errorMessage: null
   },
   fetchFavoriteProducts: {
+    error: false,
+    errorMessage: null
+  },
+  fetchOrders: {
     error: false,
     errorMessage: null
   },
@@ -36,6 +44,11 @@ const initialState = {
     errorMessage: null
   },
   signup: {
+    error: false,
+    errorMessage: null
+  },
+  order: {
+    success: false,
     error: false,
     errorMessage: null
   },
@@ -135,6 +148,10 @@ const uiReducer = (state = initialState, action) => {
           error: false,
           errorMessage: null
         },
+        fetchOrders: {
+          error: false,
+          errorMessage: null
+        },
         removeFromFavorites: {
           error: false,
           errorMessage: null
@@ -148,6 +165,11 @@ const uiReducer = (state = initialState, action) => {
           errorMessage: null
         },
         fetchFavoriteProducts: {
+          error: false,
+          errorMessage: null
+        },
+        order: {
+          success: false,
           error: false,
           errorMessage: null
         }
@@ -168,6 +190,44 @@ const uiReducer = (state = initialState, action) => {
         signup: {
           error: true,
           errorMessage: action.payload
+        }
+      };
+    
+    case ORDER_SUCCESS:
+      return {
+        ...state,
+        order: {
+          success: true,
+          error: false,
+          errorMessage: null
+        }
+      };
+    
+    case ORDER_FAILED:
+      return {
+        ...state,
+        order: {
+          success: false,
+          error: true,
+          errorMessage: action.payload
+        }
+      };
+    
+    case FETCH_ORDERS_FAILED:
+      return {
+        ...state,
+        fetchOrders: {
+          error: true,
+          errorMessage: action.payload
+        }
+      };
+    
+    case FETCH_ORDERS_SUCCESS:
+      return {
+        ...state,
+        fetchOrders: {
+          error: false,
+          errorMessage: true
         }
       };
 
